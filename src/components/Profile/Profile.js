@@ -1,7 +1,8 @@
 import s from './Profile.module.scss'
 import PropTypes from 'prop-types'
 
-export default function Profile({ name, tag, location, avatar, followers, views, likes }) {
+export default function Profile({ name, tag, location, avatar, stats }) {
+  const {followers, views, likes} = stats
 return (
 <div className={`section ${s.profile}`}>
     <div className={s.description}>
@@ -39,7 +40,10 @@ Profile.propTypes = {
   tag: PropTypes.string,
   location: PropTypes.string,
   avatar: PropTypes.string,
-  followers: PropTypes.number,
-  views: PropTypes.number,
-  likes: PropTypes.number,
+  stats: PropTypes.shape({
+        followers: PropTypes.number,
+        views: PropTypes.number,
+        likes: PropTypes.number,
+        })
+
 }
